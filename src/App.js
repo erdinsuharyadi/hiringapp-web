@@ -1,65 +1,52 @@
-import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
-import Header from './components/Header';
+import React, { useState } from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import { AuthContext } from "./context/auth";
+import PrivateRoute from './PrivateRoute';
+
 import HomePage from './pages/Home';
-import Profile from './pages/Profile';
-import ProfileEdit from './pages/ProfileEdit';
+import ProfileEng from './pages/ProfileEng';
+import ProfileEngAdd from './pages/ProfileEngAdd';
+import ProfileEngEdit from './pages/ProfileEngEdit';
+import ProfileComp from './pages/ProfileComp';
 import Login from './pages/Login';
 import Signup from './pages/Signup'
 import Engineer from './pages/Engineer'
 import Hire from './pages/Hire'
 import Front from './pages/Front'
+import Logout from './components/Logout';
+import ProfileCompAdd from './pages/ProfileCompAdd';
 
-class App extends Component {
-  render() {
-    
-    if (window.location.pathname == "/signup" || window.location.pathname == "/front" || window.location.pathname == "/login") {
-      console.log('login')
-      return (
-          <Router>
-            <Route path="/front" component={Front} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/login" component={Login} />
-           
-          </Router>
-       )
-   } else {
-    console.log('Tidak login')
+function App(props) {
+
+  const [authTokens, setAuthTokens] = useState();
   
-       return (
-         
-         <Router>
-            
-            <Header/>
-            
-            <div className="content">
-              <Route exact path="/" component={HomePage} />
-              <Route exact path="/profile" component={Profile} />
-              <Route path="/profile/edit" component={ProfileEdit} />
-              <Route path="/engineer/:idEngineer" component={Engineer} />
-              <Route path="/hire" component={Hire} />
-            </div>
-          </Router>
-         
-       )
-   }
-{/* return (
-     
-    <Router>      
-    <div>
-    <Header />
-    <div className="content">
-    <Route exact path="/" component={Profile} />
-    <Route path="/profile" component={Profile} />
-    <Route path="/login" component={Login} />
-    <Route path="/signup" component={Signup} />
-    <Route path="/engineer/:idEngineer" component={Engineer} />
-    <Route path="/hire" component={Hire} />
-    </div>
-    </div>
-    </Router>
-    ); */}
+  const setTokens = (data) => {
+    console.log(data)
+    localStorage.setItem("x-access-token", JSON.stringify(data));
+    setAuthTokens(data);
   }
- }
+
+  return (
+    <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
+      <Router>
+        <div>
+          <PrivateRoute exact path="/engineer/profile" component={ProfileEng} />
+          <PrivateRoute path="/engineer/profile/add" component={ProfileEngAdd} />
+          <PrivateRoute path="/engineer/profile/edit" component={ProfileEngEdit} />
+          <PrivateRoute exact path="/company/profile" component={ProfileComp} />
+          <PrivateRoute path="/company/profile/add" component={ProfileCompAdd} />
+          <PrivateRoute path="/detail/:idEngineer" component={Engineer} />
+          <PrivateRoute path="/hire/:idEngineer" component={Hire} />
+          <PrivateRoute path="/logout" component={Logout} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/login" component={Login} />
+          <Route path="/front" component={Front} />
+          <PrivateRoute exact path="/" component={HomePage} />
+        </div>
+      </Router>
+    </AuthContext.Provider>
+  );
+}
+
 
 export default App

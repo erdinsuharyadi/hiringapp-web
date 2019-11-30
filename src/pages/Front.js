@@ -20,7 +20,7 @@ export default class Front extends React.Component{
             </div>
             {/* Sign Up */}
             
-            <div className="col-md-6 mt-6 ">
+            <div className="col-md-6 mt-6">
              
               <form className="signup-form">
                 <h2 className="text-center sign">Welcome to Hiring App</h2>
