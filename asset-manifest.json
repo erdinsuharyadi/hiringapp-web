@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/erdinsuharyadi/hiringapp-web.git/static/css/main.23067acd.chunk.css",
+    "main.js": "/erdinsuharyadi/hiringapp-web.git/static/js/main.f8454d36.chunk.js",
+    "main.js.map": "/erdinsuharyadi/hiringapp-web.git/static/js/main.f8454d36.chunk.js.map",
+    "runtime-main.js": "/erdinsuharyadi/hiringapp-web.git/static/js/runtime-main.06422e14.js",
+    "runtime-main.js.map": "/erdinsuharyadi/hiringapp-web.git/static/js/runtime-main.06422e14.js.map",
+    "static/css/2.b0bb7f2c.chunk.css": "/erdinsuharyadi/hiringapp-web.git/static/css/2.b0bb7f2c.chunk.css",
+    "static/js/2.fbab5b0d.chunk.js": "/erdinsuharyadi/hiringapp-web.git/static/js/2.fbab5b0d.chunk.js",
+    "static/js/2.fbab5b0d.chunk.js.map": "/erdinsuharyadi/hiringapp-web.git/static/js/2.fbab5b0d.chunk.js.map",
+    "index.html": "/erdinsuharyadi/hiringapp-web.git/index.html",
+    "precache-manifest.ee33c00ca7c6011a9458755fb8ccb878.js": "/erdinsuharyadi/hiringapp-web.git/precache-manifest.ee33c00ca7c6011a9458755fb8ccb878.js",
+    "service-worker.js": "/erdinsuharyadi/hiringapp-web.git/service-worker.js",
+    "static/css/2.b0bb7f2c.chunk.css.map": "/erdinsuharyadi/hiringapp-web.git/static/css/2.b0bb7f2c.chunk.css.map",
+    "static/css/main.23067acd.chunk.css.map": "/erdinsuharyadi/hiringapp-web.git/static/css/main.23067acd.chunk.css.map",
+    "static/media/logo-arka.png": "/erdinsuharyadi/hiringapp-web.git/static/media/logo-arka.9c1222ba.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.06422e14.js",
+    "static/css/2.b0bb7f2c.chunk.css",
+    "static/js/2.fbab5b0d.chunk.js",
+    "static/css/main.23067acd.chunk.css",
+    "static/js/main.f8454d36.chunk.js"
+  ]
+}
