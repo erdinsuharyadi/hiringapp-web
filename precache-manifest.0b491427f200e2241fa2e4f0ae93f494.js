@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "df56df4efcbd1d6b990c6bfebf6e1a42",
+    "revision": "c715891ebc0494a902b0afc2af5b8e02",
     "url": "/erdinsuharyadi/hiringapp-web.git/index.html"
   },
   {
