@@ -5,8 +5,6 @@ export default class Front extends React.Component{
     render(){
       return(
         <div>
-        
-      
         <section id="home">
         <div className="container">
           <div className="row">
