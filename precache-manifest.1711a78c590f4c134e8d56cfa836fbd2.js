@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "df06d1c3f903398382a8e45b72a55aee",
+    "revision": "df56df4efcbd1d6b990c6bfebf6e1a42",
     "url": "/erdinsuharyadi/hiringapp-web.git/index.html"
   },
   {
-    "revision": "98b1a30053c29c88a837",
+    "revision": "4dc60bf6417710b9fe02",
     "url": "/erdinsuharyadi/hiringapp-web.git/static/css/2.b0bb7f2c.chunk.css"
   },
   {
-    "revision": "fe3bebe30b5cc882d185",
+    "revision": "2bb4fd3f92a213e7f5b3",
     "url": "/erdinsuharyadi/hiringapp-web.git/static/css/main.23067acd.chunk.css"
   },
   {
-    "revision": "98b1a30053c29c88a837",
-    "url": "/erdinsuharyadi/hiringapp-web.git/static/js/2.fbab5b0d.chunk.js"
+    "revision": "4dc60bf6417710b9fe02",
+    "url": "/erdinsuharyadi/hiringapp-web.git/static/js/2.bdd13d48.chunk.js"
   },
   {
-    "revision": "fe3bebe30b5cc882d185",
-    "url": "/erdinsuharyadi/hiringapp-web.git/static/js/main.f8454d36.chunk.js"
+    "revision": "2bb4fd3f92a213e7f5b3",
+    "url": "/erdinsuharyadi/hiringapp-web.git/static/js/main.ef8d434a.chunk.js"
   },
   {
     "revision": "a580b9c53d6b39ab32b9",

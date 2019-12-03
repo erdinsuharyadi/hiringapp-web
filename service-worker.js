@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/erdinsuharyadi/hiringapp-web.git/precache-manifest.ee33c00ca7c6011a9458755fb8ccb878.js"
+  "/erdinsuharyadi/hiringapp-web.git/precache-manifest.1711a78c590f4c134e8d56cfa836fbd2.js"
 );
 
 self.addEventListener('message', (event) => {
