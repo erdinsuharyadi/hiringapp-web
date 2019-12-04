@@ -11,11 +11,12 @@ import ProfileComp from './pages/ProfileComp';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup'
 import Engineer from './pages/Engineer'
-import Hire from './pages/Hire'
+import Hire from './pages/Hire/Hire'
 import Front from './pages/Front'
 import Logout from './components/Logout';
 import ProfileCompAdd from './pages/ProfileCompAdd';
 import ProfileCompEdit from './pages/Company/ProfileCompEdit';
+import Project from './pages/Project/Project';
 import ProjectAdd from './pages/Project/ProjectAdd';
 
 
@@ -39,9 +40,11 @@ function App(props) {
           <Route exact path="/company/profile" component={ProfileComp} />
           <Route path="/company/profile/add" component={ProfileCompAdd} />
           <Route path="/company/profile/edit" component={ProfileCompEdit} />
+          <Route exact path="/company/project/" component={Project} />
+          <Route path="/company/project/add" component={ProjectAdd} />
           <Route path="/detail/:idEngineer" component={Engineer} />
           <Route path="/hire/:idEngineer" component={Hire} />
-          <Route path="/company/project/add" component={ProjectAdd} />
+          
           <Route path="/logout" component={Logout} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />

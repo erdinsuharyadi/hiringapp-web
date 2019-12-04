@@ -14,7 +14,7 @@ class ProfileCamp extends Component {
           <div className="float-right">
             <Link to="profile/edit"><button className="btn btn-md btn-gray200 mr-2">Edit Company</button></Link>
             <Link to="project/add"><button className="btn btn-md btn-gray200 mr-2">Add Project</button></Link>
-            {/* <Link to="profile/edit"><button className="btn btn-md btn-gray200 mr-2">Edit Profile</button></Link> */}
+            <Link to="project"><button className="btn btn-md btn-gray200 mr-2">Project</button></Link>
             {/* <Link to="profile/account"><button className="btn btn-md btn-gray200">Account</button></Link> */}
           </div>
           <h1 className="font-weight-bold title">Sal</h1>

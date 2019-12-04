@@ -45,7 +45,10 @@ function Login() {
   }
 
   if (isLoggedIn) {
-    return window.location.href = "/home";;
+    // return window.location.href = "/home"
+    return window.location.replace("/home")
+    // <Redirect to="/home" /> 
+    // return window.location.reload()
   }
 
   return (
