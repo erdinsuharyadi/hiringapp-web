@@ -12,7 +12,8 @@ class ProfileCamp extends Component {
         <div className="container mb-4">
           <img src={require("../assets/img/av.png")} alt="user profile" className="mt-neg100 mb-4 rounded-circle" width={128} />
           <div className="float-right">
-            <Link to="profile/add"><button className="btn btn-md btn-gray200 mr-2">Add Company</button></Link>
+            <Link to="profile/edit"><button className="btn btn-md btn-gray200 mr-2">Edit Company</button></Link>
+            <Link to="project/add"><button className="btn btn-md btn-gray200 mr-2">Add Project</button></Link>
             {/* <Link to="profile/edit"><button className="btn btn-md btn-gray200 mr-2">Edit Profile</button></Link> */}
             {/* <Link to="profile/account"><button className="btn btn-md btn-gray200">Account</button></Link> */}
           </div>

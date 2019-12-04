@@ -29,8 +29,21 @@ module.exports = {
     })
   },
 
+  axiosPut: (url, body) => {
+    instance.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded'
+    return new Promise((resolve, reject) => {
+      instance.put(url, body)
+        .then(result => {
+          resolve(result)
+        })
+        .catch(error => {
+          reject(error.response.status)
+        })
+    })
+  },
+
   axiosPatch: (url, body) => {
-    // instance.defaults.headers.post['Content-Type'] = 'multipart/form-data'
+    instance.defaults.headers.patch['Content-Type'] = 'multipart/form-data'
     return new Promise((resolve, reject) => {
       instance.patch(url, body, {
         onUploadProgress: progressEvent => {
@@ -41,7 +54,7 @@ module.exports = {
           resolve(result)
         })
         .catch(error => {
-          reject(error.response.status)
+          reject(error.response)
         })
     })
   }

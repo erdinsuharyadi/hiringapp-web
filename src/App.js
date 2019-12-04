@@ -15,6 +15,9 @@ import Hire from './pages/Hire'
 import Front from './pages/Front'
 import Logout from './components/Logout';
 import ProfileCompAdd from './pages/ProfileCompAdd';
+import ProfileCompEdit from './pages/Company/ProfileCompEdit';
+import ProjectAdd from './pages/Project/ProjectAdd';
+
 
 function App(props) {
 
@@ -35,13 +38,15 @@ function App(props) {
           <Route path="/engineer/profile/edit" component={ProfileEngEdit} />
           <Route exact path="/company/profile" component={ProfileComp} />
           <Route path="/company/profile/add" component={ProfileCompAdd} />
+          <Route path="/company/profile/edit" component={ProfileCompEdit} />
           <Route path="/detail/:idEngineer" component={Engineer} />
           <Route path="/hire/:idEngineer" component={Hire} />
+          <Route path="/company/project/add" component={ProjectAdd} />
           <Route path="/logout" component={Logout} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
-          <Route path="/front" component={Front} />
-          <Route exact path="/" component={HomePage} />
+          <Route path="/home" component={HomePage} />
+          <Route exact path="/" component={Front} />
         </div>
       </Router>
     </AuthContext.Provider>

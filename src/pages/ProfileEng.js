@@ -12,9 +12,9 @@ class ProfileEng extends Component {
         <div className="container mb-4">
           <img src={require("../assets/img/av.png")} alt="user profile" className="mt-neg100 mb-4 rounded-circle" width={128} />
           <div className="float-right">
-            <Link to="profile/add"><button className="btn btn-md btn-gray200 mr-2">Add Profile</button></Link>
-            <Link to="profile/edit"><button className="btn btn-md btn-gray200 mr-2">Edit Profile</button></Link>
-            <Link to="profile/account"><button className="btn btn-md btn-gray200">Account</button></Link>
+            <Link to="profile/add"><button className="btn btn-md btn-gray200 mr-2 mb-2">Add Profile</button></Link>
+            <Link to="profile/edit"><button className="btn btn-md btn-gray200 mr-2 mb-2">Edit Profile</button></Link>
+            {/* <Link to="profile/account"><button className="btn btn-md btn-gray200 mb-2">Account</button></Link> */}
           </div>
           <h1 className="font-weight-bold title">Sal</h1>
           <p>

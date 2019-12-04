@@ -45,7 +45,7 @@ function Login() {
   }
 
   if (isLoggedIn) {
-    return window.location.href = "/";;
+    return window.location.href = "/home";;
   }
 
   return (
@@ -65,34 +65,6 @@ function Login() {
             })}
             onSubmit={fields => {
               postLogin(fields)
-              // alert("SUCCESS!! :-)\n\n" + JSON.stringify(fields, null, 4));
-              // axios
-              //   .post("http://localhost:4000/auth/login/", fields)
-              //   .then(result => {
-              //     if (result.status === 200) {
-              //       axios.defaults.headers.common["Authorization"] =
-              //         result.data.result.token;
-              //       setAuthTokens(result.data.result.token);
-              //       localStorage.setItem("username", fields.username);
-              //       alert("Login Success!");
-              //       setLoggedIn(true);
-              //     } else {
-              //       setIsError(true);
-              //       alert("Login Failed!");
-              //     }
-              //   })
-              //   .catch(err => {
-              //     if (err.response) {
-              //       const result = err.response.data.result;
-              //       alert(result.message);
-              //       return console.log(result);
-              //     }
-              //     if (err.request) {
-              //       return console.log(err.request);
-              //     } else {
-              //       return console.log(err);
-              //     }
-              //   });
             }}
           >
             {({ errors, status, touched }) => (
