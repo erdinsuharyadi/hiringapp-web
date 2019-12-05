@@ -23,7 +23,7 @@ class CardOffer extends Component {
             <span className="badge badge-pill badge-light">-</span>
           )}
           <Link
-            to={"/offer/view/" + this.props.idproject}
+            to={"/offer/view/?idProj=" + this.props.idproject +"&idEng="+ this.props.ideng}
             className="btn btn-sm btn-primary float-right"
           >
             View Detail

@@ -45,13 +45,11 @@ class Project extends Component {
             {this.state.arr_project.map((val, idx) => (
               <CardProject
                 key={idx}
-                companyname={val.name}
                 datepost={moment
                             .utc(val.createProjEng)
                             .format("LLLL")}
                 projectname={val.project_name}
                 projectdesc={val.description}
-                sts_project_eng={val.sts_project_eng}
                 idproject={val.id_project}
               />
             ))}

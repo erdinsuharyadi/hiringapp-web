@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { axiosGet, axiosPost, axiosPatch } from "../../utils/API";
 import Header from "../../components/Header";
 import moment from "moment";
+import queryString from "query-string";
+
+
 
 class OfferDetail extends Component {
   constructor(props) {
@@ -11,11 +14,11 @@ class OfferDetail extends Component {
     this.state = {
       obj_proj: {},
       feebid: "",
-      desc_nego: "",
+      desc_nego: ""
     };
     this.bidding = this.bidding.bind(this);
     this.rejectProj = this.rejectProj.bind(this);
-    this.acceptProj = this.acceptProj.bind(this)
+    this.acceptProj = this.acceptProj.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
@@ -24,14 +27,19 @@ class OfferDetail extends Component {
   };
 
   async componentDidMount() {
-    let IdProj = this.props.match.params.idProj;
-    const resProj = await this.getData("/project/" + IdProj);
+    const values = queryString.parse(this.props.location.search)
+    
+    let IdProj = values.idProj
+    let IdEng = values.idEng
+    const resProj = await this.getData(
+      "/project/offer/?idProj=" + IdProj + "&idEng=" + IdEng
+    );
     const dataProj = resProj.data.result[0];
     console.log(dataProj);
 
     if (dataProj) {
       this.setState({ obj_proj: dataProj });
-      if (dataProj.sts_project_eng === '1') {
+      if (dataProj.sts_project_eng === "1") {
         this.myBtnReject.disabled = false;
         this.myBtnBidding.disabled = false;
         this.myBtnAccepted.disabled = false;
@@ -47,8 +55,8 @@ class OfferDetail extends Component {
     try {
       const response = await axiosPatch("/project/sts/", {
         id_project_eng: this.state.obj_proj.id_project_eng,
-        sts_project_eng: '0',
-        date_accepted_eng: null,
+        sts_project_eng: "0",
+        date_accepted_eng: null
       });
       console.log("Returned data:", response.data);
       if (response.data.result.affectedRows === 1) {
@@ -67,8 +75,8 @@ class OfferDetail extends Component {
     try {
       const response = await axiosPatch("/project/sts/", {
         id_project_eng: this.state.obj_proj.id_project_eng,
-        sts_project_eng: '2',
-        date_accepted_eng: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
+        sts_project_eng: "2",
+        date_accepted_eng: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
       });
       console.log("Returned data:", response.data);
       if (response.data.result.affectedRows === 1) {
@@ -238,7 +246,7 @@ class OfferDetail extends Component {
                         </p>
                       </div>
 
-                      <hr/>
+                      <hr />
 
                       <div className="form-group p-t-15 text-center">
                         <Link to="/offer/">
@@ -251,14 +259,14 @@ class OfferDetail extends Component {
                           className="btn btn-md btn-danger mr-3 mb-2"
                           value="Reject"
                           onClick={this.rejectProj}
-                          ref={(button) => this.myBtnReject=button}
+                          ref={button => (this.myBtnReject = button)}
                         />
                         <button
-                          type="button" 
+                          type="button"
                           className="btn btn-md btn-secondary mr-3 mb-2"
                           data-toggle="modal"
                           data-target="#modalBiddingFee"
-                          ref={(button) => this.myBtnBidding=button}
+                          ref={button => (this.myBtnBidding = button)}
                         >
                           Bidding
                         </button>
@@ -267,13 +275,11 @@ class OfferDetail extends Component {
                           className="btn btn-md btn-success mr-2 mb-2"
                           value="Accept"
                           onClick={this.acceptProj}
-                          ref={(button) => this.myBtnAccepted=button}
+                          ref={button => (this.myBtnAccepted = button)}
                         />
                       </div>
                       <br />
                       <div>
-                       
-
                         <div
                           className="modal fade"
                           id="modalBiddingFee"

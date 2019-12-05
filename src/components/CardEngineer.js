@@ -17,7 +17,7 @@ const CardEngineer = (props) => {
           </p>
        
         <div className="more">
-          <Link to={'detail/' + props.ideng}>
+          <Link to={'/detail/' + props.ideng}>
             <FaArrowAltCircleRight /> More Detail</Link>
         </div>
       </div>
