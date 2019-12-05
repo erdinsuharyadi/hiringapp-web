@@ -66,7 +66,7 @@ class ProjectAdd extends Component {
                     src="https://res.cloudinary.com/erdinsuharyadi/image/upload/v1575438930/hiringapp/assets/projectheader.png"
                   />
                   <div className="card-body">
-                    <h1 className="card-title display-4">Project Form </h1>
+                    <h1 className="card-title display-4 text-center">Project Form </h1>
                     <ul>
                       <li>Field this form to add your project</li>
                     </ul>

@@ -32,7 +32,9 @@ class Offer extends Component {
       <div>
         <Header />
         <main role="main">
-          <div className="container mt-7 mb-4">
+          <div className="jumbotron border-round-0 mt-2 min-50vh" style={{backgroundImage: 'url(https://res.cloudinary.com/erdinsuharyadi/image/upload/v1575545937/hiringapp/assets/head-jumbotron-offer-eng.png)', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}} >
+          </div>
+          <div className="container mb-4">
             <h1 className="font-weight-bold title mb-3">Project Offer</h1>
             <hr />
 

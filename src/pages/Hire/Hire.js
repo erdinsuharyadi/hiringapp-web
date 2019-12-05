@@ -101,7 +101,7 @@ class Hire extends Component {
                     src="https://res.cloudinary.com/erdinsuharyadi/image/upload/v1575001317/hiringapp/assets/hireheader.png"
                   />
                   <div className="card-body">
-                    <h1 className="card-title display-4">Hire Form </h1>
+                    <h1 className="card-title display-4 text-center">Hire Form </h1>
                     <ul>
                       <li>Field this form to get software engineer</li>
                     </ul>

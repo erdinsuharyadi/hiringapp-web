@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
-import { axiosGet, axiosPost, axiosPatch, axiosPut } from "../../utils/API";
+import { axiosGet, axiosPost, axiosPatch } from "../../utils/API";
 import Header from "../../components/Header";
 import moment from "moment";
 
@@ -9,19 +9,13 @@ class OfferDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      obj_data_eng: {},
-      skills: [""],
-      name_eng: "",
-      dob: "",
-      location: "",
-      no_hp: "",
-      job: "",
-      showcase: "",
-      selectedOptions: [],
-      selectedFile: null
+      obj_proj: {},
+      feebid: "",
+      desc_nego: "",
     };
-    this.updateEng = this.updateEng.bind(this);
-    this.fileUploadHandler = this.fileUploadHandler.bind(this);
+    this.bidding = this.bidding.bind(this);
+    this.rejectProj = this.rejectProj.bind(this);
+    this.acceptProj = this.acceptProj.bind(this)
     this.onChange = this.onChange.bind(this);
   }
 
@@ -30,92 +24,117 @@ class OfferDetail extends Component {
   };
 
   async componentDidMount() {
-    const resEng = await this.getData("/engineer/id/1");
-    const dataEng = resEng.data.result[0];
-    const response = await this.getData("/skill/");
-    const res = response.data.result;
-    console.log(dataEng);
-    this.setState({ obj_data_eng: dataEng });
-    if (response.data) {
-      const arr_skill = res.map(i => ({
-        value: i.id_skill,
-        label: i.name_skill
-      }));
-      this.setState({ skills: arr_skill });
+    let IdProj = this.props.match.params.idProj;
+    const resProj = await this.getData("/project/" + IdProj);
+    const dataProj = resProj.data.result[0];
+    console.log(dataProj);
+
+    if (dataProj) {
+      this.setState({ obj_proj: dataProj });
+      if (dataProj.sts_project_eng === '1') {
+        this.myBtnReject.disabled = false;
+        this.myBtnBidding.disabled = false;
+        this.myBtnAccepted.disabled = false;
+      } else {
+        this.myBtnReject.disabled = true;
+        this.myBtnBidding.disabled = true;
+        this.myBtnAccepted.disabled = true;
+      }
     }
   }
 
-  async updateEng() {
+  async rejectProj() {
     try {
-      const response = await axiosPut("http://localhost:4000/engineer/1", {
-        name_eng: this.state.name_eng || this.state.obj_data_eng.name_eng,
-        dob: this.state.dob || this.state.obj_data_eng.dob,
-        location: this.state.location || this.state.obj_data_eng.location,
-        no_hp: this.state.no_hp || this.state.obj_data_eng.no_hp,
-        job: this.state.job || this.state.obj_data_eng.job,
-        showcase: this.state.showcase || this.state.obj_data_eng.showcase
+      const response = await axiosPatch("/project/sts/", {
+        id_project_eng: this.state.obj_proj.id_project_eng,
+        sts_project_eng: '0',
+        date_accepted_eng: null,
       });
-      const arrSelSkill = this.state.selectedOptions;
-      for (let i = 0; i < arrSelSkill.length; i++) {
-        const idSkill = arrSelSkill[i].value;
-        console.log(idSkill)
-        await axiosPost("/engskill/", {
-          id_eng: 1,
-          id_skill: idSkill
-        });
-      }
       console.log("Returned data:", response.data);
-      if (response.data) {
-        // localStorage.setItem("tokens", JSON.stringify(response.data));
-        // setAuthTokens(data);
-        alert("Submit Success!");
-        // this.setState({redirect: true})
+      if (response.data.result.affectedRows === 1) {
+        alert("Reject offer successful!");
+        window.location.reload();
+      } else {
+        alert("Reject offer failed!");
       }
     } catch (e) {
+      alert("Reject offer error!");
+      console.log(`Axios request failed: ${e}`);
+    }
+  }
+
+  async acceptProj() {
+    try {
+      const response = await axiosPatch("/project/sts/", {
+        id_project_eng: this.state.obj_proj.id_project_eng,
+        sts_project_eng: '2',
+        date_accepted_eng: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
+      });
+      console.log("Returned data:", response.data);
+      if (response.data.result.affectedRows === 1) {
+        alert("Accept offer successful!");
+        window.location.reload();
+      } else {
+        alert("Accept offer failed!");
+      }
+    } catch (e) {
+      alert("Reject offer error!");
+      console.log(`Axios request failed: ${e}`);
+    }
+  }
+
+  async bidding() {
+    console.log(this.state.obj_proj.id_project_eng);
+    try {
+      const response = await axiosPost("/project/bid/", {
+        id_project_eng: this.state.obj_proj.id_project_eng,
+        fee_bid: this.state.feebid,
+        desc_nego_proj: this.state.desc_nego
+      });
+      console.log("Returned data:", response.data);
+      if (response.data.result.affectedRows === 1) {
+        alert("Submit form successful!");
+        window.location.reload();
+      } else {
+        alert("Submit form failed!");
+      }
+    } catch (e) {
+      alert("Submit form error!");
       console.log(`Axios request failed: ${e}`);
     }
   }
 
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
+    console.log(this.state);
   }
 
   handleSubmit(event) {
     event.preventDefault();
   }
 
-  handleChange = selectedOptions => {
-    this.setState({ selectedOptions });
-  };
+  formatRupiah(fee, prefix) {
+    const str = "";
+    const number = str.concat(fee);
+    var number_string = number.replace(/[^,\d]/g, "").toString(),
+      split = number_string.split(","),
+      sisa = split[0].length % 3,
+      rupiah = split[0].substr(0, sisa),
+      ribuan = split[0].substr(sisa).match(/\d{3}/gi);
 
-  fileSelectedHandler = event => {
-    this.setState({
-      selectedFile: event.target.files[0]
-    });
-  };
-
-  async fileUploadHandler() {
-    try {
-      const fd = new FormData();
-      fd.append("photo", this.state.selectedFile);
-      const response = await axiosPatch("/engineer/1", fd);
-      console.log(response.data);
-      if (response.data.result.changedRows === 1) {
-        alert("Logo updated!");
-      } else {
-        alert("Upload logo failed");
-      }
-    } catch (error) {
-      alert("Upload error!");
+    if (ribuan) {
+      const separator = sisa ? "." : "";
+      rupiah += separator + ribuan.join(".");
     }
+    rupiah = split[1] !== undefined ? rupiah + "," + split[1] : rupiah;
+    return prefix === undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
   }
 
   render() {
- 
     return (
       <div>
         <Header />
-        <section className="bg-gray200 pt-8 pb-5">
+        <section className="bg-gray200 pt-8 pb-2">
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-md-7">
@@ -129,96 +148,206 @@ class OfferDetail extends Component {
                     <h1 className="card-title display-4 text-center">
                       Offer Project{" "}
                     </h1>
+                    <ul>
+                      <li>Details project from company for you</li>
+                    </ul>
                     <hr />
-
                     <form onSubmit={this.handleSubmit}>
-                      <div className="form-group">
-                        <p>Full Name:</p>
-                        <label>{this.state.obj_data_eng.name_eng}</label>
-                        {/* <input
-                          defaultValue={this.state.obj_data_eng.name_eng}
-                          className="form-control"
-                          type="text"
-                          name="name_eng"
-                          autoComplete="off"
-                          onChange={this.onChange}
-                          disabled
-                        /> */}
+                      <div className="form-group mb-2">
+                        <p>
+                          Company:
+                          <br /> <b>{this.state.obj_proj.name}</b>
+                        </p>
                       </div>
                       <div className="form-group">
-                        <p>Date of Birth:</p>
-                        <input
-                          className="form-control"
-                          type="date"
-                          name="dob"
-                          defaultValue={moment
-                            .utc(this.state.obj_data_eng.dob)
-                            .format("YYYY-MM-DD")}
-                          autoComplete="off"
-                          onChange={this.onChange}
-                        />
+                        <p className="mb-2">
+                          Project Name:
+                          <br /> <b>{this.state.obj_proj.project_name}</b>
+                        </p>
                       </div>
                       <div className="form-group">
-                        <p>Location:</p>
-                        <input
-                          defaultValue={this.state.obj_data_eng.location}
-                          className="form-control"
-                          type="text"
-                          name="location"
-                          autoComplete="off"
-                          onChange={this.onChange}
-                        />
+                        <p className="mb-2">
+                          Project Description:
+                          <br /> <b>{this.state.obj_proj.description}</b>
+                        </p>
                       </div>
                       <div className="form-group">
-                        <p>Telephone:</p>
-                        <input
-                          defaultValue={this.state.obj_data_eng.no_hp}
-                          className="form-control"
-                          type="text"
-                          name="no_hp"
-                          autoComplete="off"
-                          onChange={this.onChange}
-                        />
+                        <p className="mb-2">
+                          Project Job:
+                          <br /> <b>{this.state.obj_proj.project_job}</b>
+                        </p>
                       </div>
                       <div className="form-group">
-                        <p>Job:</p>
-                        <input
-                          defaultValue={this.state.obj_data_eng.job}
-                          className="form-control"
-                          type="text"
-                          name="job"
-                          autoComplete="off"
-                          onChange={this.onChange}
-                        />
+                        <p className="mb-2">
+                          Period:
+                          <br /> <b>{this.state.obj_proj.period}</b>
+                        </p>
                       </div>
                       <div className="form-group">
-                        <p>Link Showcase:</p>
-                        <input
-                          defaultValue={this.state.obj_data_eng.showcase}
-                          className="form-control"
-                          type="text"
-                          name="showcase"
-                          autoComplete="off"
-                          onChange={this.onChange}
-                        />
+                        <p className="mb-2">
+                          Estimated Deadline:
+                          <br />{" "}
+                          <b>
+                            {moment
+                              .utc(this.state.obj_proj.deadline)
+                              .format("DD MMMM YYYY")}
+                          </b>
+                        </p>
+                      </div>
+                      <div className="form-group">
+                        <p className="mb-2">
+                          Fee:
+                          <br />{" "}
+                          <b>
+                            {this.formatRupiah(this.state.obj_proj.fee, "Rp")}
+                          </b>
+                        </p>
+                      </div>
+                      <div className="form-group">
+                        <p className="mb-2">
+                          Offer Date:
+                          <br />{" "}
+                          <b>
+                            {moment
+                              .utc(this.state.obj_proj.createProjEng)
+                              .format("LLLL")}
+                          </b>
+                        </p>
+                      </div>
+                      <div className="form-group">
+                        <p className="mb-2">
+                          Status:
+                          <br />{" "}
+                          {this.state.obj_proj.sts_project_eng === "1" ? (
+                            <span className="badge badge-pill badge-warning">
+                              Waiting for Confirmation
+                            </span>
+                          ) : this.state.obj_proj.sts_project_eng === "2" ? (
+                            <span className="badge badge-pill badge-success">
+                              Accepted
+                            </span>
+                          ) : this.state.obj_proj.sts_project_eng === "0" ? (
+                            <span className="badge badge-pill badge-danger">
+                              Rejected
+                            </span>
+                          ) : (
+                            <span className="badge badge-pill badge-light">
+                              -
+                            </span>
+                          )}
+                        </p>
                       </div>
 
-                      
-                      <div className="form-group p-t-15 text-right">
-                        <Link to="/company/profile">
-                          <button className="btn btn-md btn-light mr-3">
-                            Cancel
+                      <hr/>
+
+                      <div className="form-group p-t-15 text-center">
+                        <Link to="/offer/">
+                          <button className="btn btn-md btn-light mr-3 mb-2">
+                            Back
                           </button>
                         </Link>
                         <input
-                          type="submit"
-                          className="btn btn-md btn-primary"
-                          value="Submit"
-                          onClick={this.updateEng}
+                          type="button"
+                          className="btn btn-md btn-danger mr-3 mb-2"
+                          value="Reject"
+                          onClick={this.rejectProj}
+                          ref={(button) => this.myBtnReject=button}
+                        />
+                        <button
+                          type="button" 
+                          className="btn btn-md btn-secondary mr-3 mb-2"
+                          data-toggle="modal"
+                          data-target="#modalBiddingFee"
+                          ref={(button) => this.myBtnBidding=button}
+                        >
+                          Bidding
+                        </button>
+                        <input
+                          type="button"
+                          className="btn btn-md btn-success mr-2 mb-2"
+                          value="Accept"
+                          onClick={this.acceptProj}
+                          ref={(button) => this.myBtnAccepted=button}
                         />
                       </div>
+                      <br />
+                      <div>
+                       
+
+                        <div
+                          className="modal fade"
+                          id="modalBiddingFee"
+                          tabIndex={-1}
+                          role="dialog"
+                          aria-labelledby="exampleModalLabel"
+                          aria-hidden="true"
+                        >
+                          <div
+                            className="modal-dialog modal-sm"
+                            role="document"
+                          >
+                            <div className="modal-content">
+                              <div className="modal-header">
+                                <h5
+                                  className="modal-title"
+                                  id="exampleModalLabel"
+                                >
+                                  Modal title
+                                </h5>
+                                <button
+                                  type="button"
+                                  className="close"
+                                  data-dismiss="modal"
+                                  aria-label="Close"
+                                >
+                                  <span aria-hidden="true">×</span>
+                                </button>
+                              </div>
+                              <div className="modal-body">
+                                <div className="form-group">
+                                  <p>Fee Bid:</p>
+                                  <input
+                                    className="form-control"
+                                    type="text"
+                                    name="feebid"
+                                    autoComplete="off"
+                                    placeholder="Bidding fee"
+                                    required
+                                    onChange={this.onChange}
+                                  />
+                                </div>
+                                <div className="form-group">
+                                  <p>Description:</p>
+                                  <textarea
+                                    className="form-control"
+                                    autoComplete="off"
+                                    name="desc_nego"
+                                    placeholder="Description bidding fee"
+                                    onChange={this.onChange}
+                                  ></textarea>
+                                </div>
+                              </div>
+                              <div className="modal-footer">
+                                <button
+                                  type="button"
+                                  className="btn btn-light"
+                                  data-dismiss="modal"
+                                >
+                                  Close
+                                </button>
+                                <button
+                                  type="button"
+                                  className="btn btn-primary"
+                                  onClick={this.bidding}
+                                >
+                                  Submit
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </form>
-                    
                   </div>
                 </article>
               </div>

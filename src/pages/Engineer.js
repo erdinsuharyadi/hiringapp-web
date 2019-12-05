@@ -55,11 +55,11 @@ class Engineer extends Component {
                     <li>Skill : {this.state.arr_engineer.name_skill}</li>
                   </ul>
                   
-                  <div className="mt-5">
-                    <center>
-                      <button><a className="btn btn-sm btn-gray200 mr-3" href={this.state.arr_engineer.showcase} ><FaExternalLinkSquareAlt /> Showcase</a></button>
-                      <button><Link className="btn btn-sm btn-primary" to={'/hire/'+this.state.arr_engineer.id_eng}><FaHandshake /> Hire</Link></button>
-                    </center>
+                  <div className="mt-5 text-center">
+                    
+                      <button><a className="btn btn-md btn-gray200 mr-3" href={this.state.arr_engineer.showcase} ><FaExternalLinkSquareAlt /> Showcase</a></button>
+                      <button><Link className="btn btn-md btn-primary" to={'/hire/'+this.state.arr_engineer.id_eng}><FaHandshake /> Hire</Link></button>
+                    
                   </div>
 
                 </div>

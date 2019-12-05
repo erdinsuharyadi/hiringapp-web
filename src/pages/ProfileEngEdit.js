@@ -31,7 +31,8 @@ class ProfileEngEdit extends Component {
   };
 
   async componentDidMount() {
-    const resEng = await this.getData("/engineer/id/1");
+    const userName = localStorage.getItem('username')
+    const resEng = await this.getData("/engineer/user/"+userName);
     const dataEng = resEng.data.result[0];
     const response = await this.getData("/skill/");
     const res = response.data.result;
@@ -48,9 +49,9 @@ class ProfileEngEdit extends Component {
 
   async updateEng() {
     try {
-      const response = await axiosPut("http://localhost:4000/engineer/1", {
+      const response = await axiosPut("/engineer/"+this.state.obj_data_eng.id_eng, {
         name_eng: this.state.name_eng || this.state.obj_data_eng.name_eng,
-        dob: this.state.dob || this.state.obj_data_eng.dob,
+        dob: this.state.dob,
         location: this.state.location || this.state.obj_data_eng.location,
         no_hp: this.state.no_hp || this.state.obj_data_eng.no_hp,
         job: this.state.job || this.state.obj_data_eng.job,
@@ -209,7 +210,7 @@ class ProfileEngEdit extends Component {
                         />
                       </div>
                       <div className="form-group p-t-15 text-right">
-                        <Link to="/company/profile">
+                        <Link to="/engineer/profile">
                           <button className="btn btn-md btn-light mr-3">
                             Cancel
                           </button>
