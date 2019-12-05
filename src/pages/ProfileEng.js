@@ -26,4 +26,4 @@ class ProfileEng extends Component {
     )
   }
 }
-export default ProfileEng;
+export default ProfileEng

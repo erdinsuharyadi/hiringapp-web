@@ -13,6 +13,8 @@ import Signup from './pages/Signup/Signup'
 import Engineer from './pages/Engineer'
 import Hire from './pages/Hire/Hire'
 import Front from './pages/Front'
+import Offer from './pages/Offer/Offer'
+import OfferDetail from './pages/Offer/OfferDetail'
 import Logout from './components/Logout';
 import ProfileCompAdd from './pages/ProfileCompAdd';
 import ProfileCompEdit from './pages/Company/ProfileCompEdit';
@@ -44,7 +46,8 @@ function App(props) {
           <Route path="/company/project/add" component={ProjectAdd} />
           <Route path="/detail/:idEngineer" component={Engineer} />
           <Route path="/hire/:idEngineer" component={Hire} />
-          
+          <Route exact path="/offer" component={Offer} />
+          <Route path="/offer/view/:idComp" component={OfferDetail} />
           <Route path="/logout" component={Logout} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />

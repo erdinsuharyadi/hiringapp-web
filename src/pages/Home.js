@@ -24,7 +24,6 @@ class Home extends Component {
     console.log(response.data.result)
     if (response.data) {
       this.setState({ arr_engineer: res }) 
-
     }
   }
 
