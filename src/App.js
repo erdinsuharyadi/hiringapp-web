@@ -20,6 +20,7 @@ import ProfileCompAdd from './pages/ProfileCompAdd';
 import ProfileCompEdit from './pages/Company/ProfileCompEdit';
 import Project from './pages/Project/Project';
 import ProjectAdd from './pages/Project/ProjectAdd';
+import ProjectDetail from './pages/Project/ProjectDetail';
 
 
 function App(props) {
@@ -44,6 +45,7 @@ function App(props) {
           <Route path="/company/profile/edit" component={ProfileCompEdit} />
           <Route exact path="/company/project/" component={Project} />
           <Route path="/company/project/add" component={ProjectAdd} />
+          <Route path="/company/project/view/:idProj" component={ProjectDetail} />
           <Route path="/detail/:idEngineer" component={Engineer} />
           <Route path="/hire/:idEngineer" component={Hire} />
           <Route exact path="/offer" component={Offer} />

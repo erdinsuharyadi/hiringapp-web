@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { axiosPost } from "../../utils/API";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
@@ -114,10 +114,15 @@ class ProjectAdd extends Component {
                           onChange={this.onChange}
                         />
                       </div>
-                      <div className="form-group text-center">
+                      <div className="form-group text-right">
+                        <Link to="/company/project">
+                          <button className="btn btn-md btn-light mt-4 mr-3 mb-2">
+                            Cancel
+                          </button>
+                        </Link>
                         <button
                           type="button"
-                          className="btn btn-md btn-primary mt-4"
+                          className="btn btn-md btn-primary mt-4 mb-2"
                           onClick={this.submitProject}
                         >
                           Submit

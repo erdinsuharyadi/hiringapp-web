@@ -7,14 +7,13 @@ class ProfileCamp extends Component {
       <div>
       <Header/>
       <main role="main">
-        <div className="jumbotron border-round-0 min-50vh" style={{backgroundImage: 'url(https://timelinecovers.pro/facebook-cover/download/pimple-a-simple-php-dependency-injection-container-facebook-cover.jpg)', backgroundSize: '100%'}} >
+        <div className="jumbotron border-round-0 min-50vh" style={{backgroundImage: 'url(https://res.cloudinary.com/erdinsuharyadi/image/upload/v1575554391/hiringapp/assets/head-profile.png)', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}} >
         </div>
         <div className="container mb-4">
           <img src={require("../assets/img/av.png")} alt="user profile" className="mt-neg100 mb-4 rounded-circle" width={128} />
           <div className="float-right">
-            <Link to="profile/edit"><button className="btn btn-md btn-gray200 mr-2">Edit Company</button></Link>
-            <Link to="project/add"><button className="btn btn-md btn-gray200 mr-2">Add Project</button></Link>
-            <Link to="project"><button className="btn btn-md btn-gray200 mr-2">Project</button></Link>
+            <Link to="profile/edit"><button className="btn btn-md btn-gray200 mr-2 mb-2">Edit Company</button></Link>
+            <Link to="project"><button className="btn btn-md btn-gray200 mr-2 mb-2">Project</button></Link>
             {/* <Link to="profile/account"><button className="btn btn-md btn-gray200">Account</button></Link> */}
           </div>
           <h1 className="font-weight-bold title">Sal</h1>

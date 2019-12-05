@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-// import { FaArrowAltCircleRight, FaCheckCircle, FaStar } from 'react-icons/fa'
 import { Link } from "react-router-dom";
 
 class CardOffer extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
 
   render() {
     return (
