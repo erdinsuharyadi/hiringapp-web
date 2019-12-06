@@ -210,7 +210,7 @@ class ProfileEngEdit extends Component {
                         />
                       </div>
                       <div className="form-group p-t-15 text-right">
-                        <Link to="/engineer/profile">
+                        <Link to={"/engineer/profile/"+localStorage.getItem('username')}>
                           <button className="btn btn-md btn-light mr-3">
                             Cancel
                           </button>

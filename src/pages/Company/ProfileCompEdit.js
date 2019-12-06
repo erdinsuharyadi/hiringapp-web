@@ -145,7 +145,7 @@ class ProfileCompEdit extends Component {
                       </div>
 
                       <div className="form-group p-t-15 text-right">
-                        <Link to="/company/profile">
+                        <Link to={"/company/profile/"+localStorage.getItem('username')}>
                           <button className="btn btn-md btn-light mr-3">
                             Cancel
                           </button>

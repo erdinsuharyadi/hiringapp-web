@@ -70,12 +70,12 @@ class Header extends Component {
               </div>
 
               <li className="nav-item ml-8 mt-2 mb-2">
-                <Link className="navbar-brand" to="/">
+                <Link className="navbar-brand" to="/home">
                   Home
                 </Link>
               </li>
               <li className="nav-item ml-2">
-                <Link className="navbar-brand" to="/company/profile">
+                <Link className="navbar-brand" to={"/company/profile/"+localStorage.getItem('username')}>
                   <img
                     className="rounded-circle mr-2"
                     src={require("../assets/img/av.png")}

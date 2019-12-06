@@ -16,11 +16,12 @@ import Front from './pages/Front'
 import Offer from './pages/Offer/Offer'
 import OfferDetail from './pages/Offer/OfferDetail'
 import Logout from './components/Logout';
-import ProfileCompAdd from './pages/ProfileCompAdd';
+// import ProfileCompAdd from './pages/ProfileCompAdd';
 import ProfileCompEdit from './pages/Company/ProfileCompEdit';
 import Project from './pages/Project/Project';
 import ProjectAdd from './pages/Project/ProjectAdd';
 import ProjectDetail from './pages/Project/ProjectDetail';
+import ProjectEdit from './pages/Project/ProjectEdit';
 
 
 function App(props) {
@@ -37,14 +38,15 @@ function App(props) {
     <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
       <Router>
         <div>
-          <Route exact path="/engineer/profile" component={ProfileEng} />
+          <Route exact path="/engineer/profile/:username" component={ProfileEng} />
           <Route path="/engineer/profile/add" component={ProfileEngAdd} />
-          <Route path="/engineer/profile/edit" component={ProfileEngEdit} />
-          <Route exact path="/company/profile" component={ProfileComp} />
-          <Route path="/company/profile/add" component={ProfileCompAdd} />
-          <Route path="/company/profile/edit" component={ProfileCompEdit} />
+          <Route path="/engineer/edit" component={ProfileEngEdit} />
+          <Route exact path="/company/profile/:username" component={ProfileComp} />
+          <Route path="/company/edit" component={ProfileCompEdit} />
+          
           <Route exact path="/company/project/" component={Project} />
           <Route path="/company/project/add" component={ProjectAdd} />
+          <Route path="/company/project/edit/:idProj" component={ProjectEdit} />
           <Route path="/company/project/view/:idProj" component={ProjectDetail} />
           <Route path="/detail/:idEngineer" component={Engineer} />
           <Route path="/hire/:idEngineer" component={Hire} />

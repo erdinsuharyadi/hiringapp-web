@@ -36,7 +36,7 @@ class Project extends Component {
           </div>
           <div className="container mb-4">
             <div className="float-right">
-            <Link to="project/add"><button className="btn btn-md btn-gray200 mr-2 mb-2">Add Project</button></Link>
+            <Link to="/company/project/add"><button className="btn btn-md btn-gray200 mr-2 mb-2">Add Project</button></Link>
             </div>
             <h1 className="font-weight-bold title mb-3">List Project</h1>
             

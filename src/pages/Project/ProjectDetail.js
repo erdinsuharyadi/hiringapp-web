@@ -5,6 +5,7 @@ import { axiosGet } from "../../utils/API";
 import Header from "../../components/Header";
 import moment from "moment";
 import CardProjEng from "../../components/CardProjEng";
+const axios = require('axios')
 
 class OfferDetail extends Component {
   constructor(props) {
@@ -47,6 +48,10 @@ class OfferDetail extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+  }
+
+  deleteProj() {
+    axios.delete("http://localhost:4000/project/5");
   }
 
   formatRupiah(fee, prefix) {
@@ -147,16 +152,17 @@ class OfferDetail extends Component {
                           type="button"
                           className="btn btn-md btn-danger mr-3 mb-2"
                           value="Delete"
-                          onClick={this.rejectProj}
-                          ref={button => (this.myBtnReject = button)}
+                          onClick={this.deleteProj}
+                          ref={button => (this.myBtnDelete = button)}
                         />
-                        <input
-                          type="button"
-                          className="btn btn-md btn-warning mr-2 mb-2"
-                          value="Edit"
-                          onClick={this.acceptProj}
-                          ref={button => (this.myBtnAccepted = button)}
-                        />
+                        <Link to={"/company/project/edit/"+this.props.match.params.idProj}>
+                          <input
+                            type="button"
+                            className="btn btn-md btn-warning mr-2 mb-2"
+                            value="Edit"
+                            ref={button => (this.myBtnEdit = button)}
+                          />
+                        </Link>
                       </div>
                     </form>
                   </div>
@@ -172,9 +178,10 @@ class OfferDetail extends Component {
                       idproject={val.id_project}
                       sts_project_eng={val.sts_project_eng}
                       fee={this.formatRupiah(val.fee, "Rp")}
-                      dateaccepted={val.date_accepted_eng || "-"}
+                      dateaccepted={val.date_accepted_eng}
                       id_project_eng={val.id_project_eng}
                       id_bid={val.id_bid}
+                      progress={val.progress}
                       
                     />
                   ))}

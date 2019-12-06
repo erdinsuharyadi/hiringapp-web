@@ -51,7 +51,7 @@ class CardProjEng extends Component {
       }
     } else {
       this.myBtnNego.disabled = this.state.btnNego;
-     
+      this.myBtnAction.disabled = this.state.btnAction;
     }
     
   }
@@ -110,8 +110,9 @@ class CardProjEng extends Component {
       console.log("Returned data:", response.data.result);
       if (response.data.result.changedRows === 1) {
         alert("Failed progress successful!");
-        window.location.reload();
         this.setState({ btnAction: true });
+        window.location.reload();
+        
       } else {
         alert("Update progress failed!");
         window.location.reload();
@@ -168,20 +169,24 @@ class CardProjEng extends Component {
       <div className="card bg-light mb-3 p-2 shadow-sm rounded">
         <div className="card-header">{this.props.datepost}</div>
         <div className="card-body">
-          <div>
-            <h6 className="card-title  ">{this.props.nameengineer}</h6>
-            <p className="card-text ">
-              {this.props.projectjob} <br />
-              {this.props.fee}
-            </p>
-            <p className="card-text ">
-              Date Accepted: {moment
-                              .utc(this.props.dateaccepted)
-                              .format("LLLL")}
+          <div className="form-group">
+            <p className="mb-1">
+              Engineer Name: <b>{this.props.nameengineer}</b>
             </p>
           </div>
-          <hr />
-          {this.props.sts_project_eng === "1" ? (
+          <div className="form-group">
+            <p className="mb-1">
+              Project Job: <b>{this.props.projectjob}</b>
+            </p>
+          </div>
+          <div className="form-group">
+            <p className="mb-1">
+              Project Fee: <b>{this.props.fee}</b>
+            </p>
+          </div>
+          <div className="form-group">
+            <p className="mb-1">
+              Status Offer: {this.props.sts_project_eng === "1" ? (
             <span className="badge badge-pill badge-warning">
               Waiting for Confirmation
             </span>
@@ -194,7 +199,26 @@ class CardProjEng extends Component {
           ) : (
             <span className="badge badge-pill badge-light">-</span>
           )}
-          <div className="form-group p-t-15 text-right">
+            </p>
+          </div>
+          <div className="form-group">
+            <p className="mb-1">
+              Date Accepted: <b>{moment
+                                .utc(this.props.dateaccepted)
+                                .format("LLLL")}</b>
+            </p>
+          </div>
+          <div className="form-group">
+            <p className="mb-1">
+              Project Goal: {this.props.progress === '1' ? <span className="badge badge-pill badge-success">Success</span> : (this.props.progress === '0' ? <span className="badge badge-pill badge-danger">Failed</span> : " -")} 
+            </p>
+          </div>
+
+
+          
+          <hr />
+          
+          <div className="form-group text-right">
             <input
               type="button"
               className="btn btn-sm btn-secondary mr-2 mb-1"
@@ -350,7 +374,7 @@ CardProjEng.defaultProps = {
   projectjob: "Project Job Engineer",
   idproject: "1",
   fee: "-",
-  dateaccepted: " -",
+  dateaccepted: "2019-12-04T11:33:34.000Z",
   id_project_eng: 0,
   id_bid: 0
 };
