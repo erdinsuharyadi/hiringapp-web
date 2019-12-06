@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import Footer from '../components/Footer'
+import Footer from '../../components/Footer'
 import { FaHandshake, FaCheckCircle, FaStar, FaExternalLinkSquareAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import Header from '../components/Header';
-import { axiosGet } from '../utils/API'
+import Header from '../../components/Header';
+import { axiosGet } from '../../utils/API'
 
 class Engineer extends Component {
  

@@ -3,16 +3,16 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { AuthContext } from "./context/auth";
 // import PrivateRoute from './PrivateRoute';
 
-import HomePage from './pages/Home';
-import ProfileEng from './pages/ProfileEng';
+import HomePage from './pages/Home/Home';
+import ProfileEng from './pages/Engineer/ProfileEng';
 import ProfileEngAdd from './pages/ProfileEngAdd';
-import ProfileEngEdit from './pages/ProfileEngEdit';
-import ProfileComp from './pages/ProfileComp';
+import ProfileEngEdit from './pages/Engineer/ProfileEngEdit';
+import ProfileComp from './pages/Company/ProfileComp';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup'
-import Engineer from './pages/Engineer'
+import Engineer from './pages/Engineer/Engineer'
 import Hire from './pages/Hire/Hire'
-import Front from './pages/Front'
+import Front from './pages/Front/Front'
 import Offer from './pages/Offer/Offer'
 import OfferDetail from './pages/Offer/OfferDetail'
 import Logout from './components/Logout';

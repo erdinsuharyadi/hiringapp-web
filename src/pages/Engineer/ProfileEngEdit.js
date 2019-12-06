@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Footer from "../components/Footer";
+import Footer from "../../components/Footer";
 import Select from "react-select";
 import { Link } from "react-router-dom";
-import { axiosGet, axiosPost, axiosPatch, axiosPut } from "../utils/API";
-import Header from "../components/Header";
+import { axiosGet, axiosPost, axiosPatch, axiosPut } from "../../utils/API";
+import Header from "../../components/Header";
 import moment from "moment";
 
 class ProfileEngEdit extends Component {

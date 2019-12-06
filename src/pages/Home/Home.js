@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import CardEngineer from '../components/CardEngineer';
-import Footer from '../components/Footer'
-import Header from '../components/Header';
-import { axiosGet } from '../utils/API'
+import CardEngineer from '../../components/CardEngineer';
+import Footer from '../../components/Footer'
+import Header from '../../components/Header';
+import { axiosGet } from '../../utils/API'
 
 class Home extends Component {
 

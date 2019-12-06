@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { axiosGet } from "../utils/API";
-class ProfileCamp extends Component {
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import { axiosGet } from "../../utils/API";
+import moment from "moment";
+
+class ProfileEng extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      obj_compuser: {}
-    };
-
+      obj_enguser: {}
+    }
   }
 
   getData = url => {
@@ -18,12 +19,12 @@ class ProfileCamp extends Component {
 
   async componentDidMount() {
     let username = this.props.match.params.username;
-    const resProj = await this.getData("/company/user/" + username);
+    const resProj = await this.getData("/engineer/user/" + username);
     const dataProj = resProj.data.result[0];
 
     console.log(dataProj);
     if (dataProj) {
-      this.setState({ obj_compuser: dataProj });
+      this.setState({ obj_enguser: dataProj });
     }
   }
 
@@ -43,28 +44,26 @@ class ProfileCamp extends Component {
           ></div>
           <div className="container mb-4">
             <img
-              src={this.state.obj_compuser.logo}
+              src={this.state.obj_enguser.photo}
               alt="user profile"
               className="mt-neg100 mb-4 rounded-circle"
               width={128}
             />
             <div className="float-right">
-              <Link to="/company/edit/">
+              <Link to="/engineer/edit">
                 <button className="btn btn-md btn-gray200 mr-2 mb-2">
-                  Edit Company
+                  Edit Profile
                 </button>
               </Link>
-              <Link to="/company/project/">
+              <Link to="/offer/">
                 <button className="btn btn-md btn-gray200 mr-2 mb-2">
                   Project
                 </button>
               </Link>
-              {/* <Link to="profile/account"><button className="btn btn-md btn-gray200">Account</button></Link> */}
+              {/* <Link to="profile/account"><button className="btn btn-md btn-gray200 mb-2">Account</button></Link> */}
             </div>
-            <h1 className="font-weight-bold title">
-              {this.state.obj_compuser.name}
-            </h1>
-            {/* <p>I love Art, Web Design, Photography, Design, Illustration</p> */}
+            <h1 className="font-weight-bold title">{this.state.obj_enguser.name_eng}</h1>
+            <p>I love Art, Web Design, Photography, Design, Illustration</p>
           </div>
         </main>
         <section className="bg-gray200 pt-4 pb-4">
@@ -75,20 +74,46 @@ class ProfileCamp extends Component {
                   <div className="card-body">
                     <div className="form-group">
                       <p className="mb-2">
-                        Company Name:
-                        <br /> <b>{this.state.obj_compuser.name_company}</b>
+                        Full Name:
+                        <br /> <b>{this.state.obj_enguser.name_eng}</b>
+                      </p>
+                    </div>
+                    <div className="form-group">
+                      <p className="mb-2">
+                        Date of Birth:
+                        <br /> <b>{moment
+                            .utc(this.state.obj_enguser.dob)
+                            .format("DD-MM-YYYY")}</b>
                       </p>
                     </div>
                     <div className="form-group">
                       <p className="mb-2">
                         Location:
-                        <br /> <b>{this.state.obj_compuser.location}</b>
+                        <br /> <b>{this.state.obj_enguser.location}</b>
                       </p>
                     </div>
                     <div className="form-group">
                       <p className="mb-2">
-                        Description:
-                        <br /> <b>{this.state.obj_compuser.description}</b>
+                        Email:
+                        <br /> <b>{this.state.obj_enguser.email}</b>
+                      </p>
+                    </div>
+                    <div className="form-group">
+                      <p className="mb-2">
+                        No HP:
+                        <br /> <b>{this.state.obj_enguser.no_hp}</b>
+                      </p>
+                    </div>
+                    <div className="form-group">
+                      <p className="mb-2">
+                        Profession:
+                        <br /> <b>{this.state.obj_enguser.job}</b>
+                      </p>
+                    </div>
+                    <div className="form-group">
+                      <p className="mb-2">
+                        Skill:
+                        <br /> <b>{this.state.obj_enguser.name_skill}</b>
                       </p>
                     </div>
                   </div>
@@ -102,4 +127,4 @@ class ProfileCamp extends Component {
     );
   }
 }
-export default ProfileCamp;
+export default ProfileEng;
