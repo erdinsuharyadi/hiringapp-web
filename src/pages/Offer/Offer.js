@@ -50,6 +50,7 @@ class Offer extends Component {
                 sts_project_eng={val.sts_project_eng}
                 idproject={val.id_project}
                 ideng={val.id_eng}
+                progress={val.progressEng}
               />
             ))}
 

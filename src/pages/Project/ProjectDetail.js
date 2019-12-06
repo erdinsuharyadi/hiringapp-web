@@ -51,7 +51,7 @@ class OfferDetail extends Component {
   }
 
   deleteProj() {
-    axios.delete("http://localhost:4000/project/5");
+    axios.delete("http://localhost:4000/project/"+this.props.match.params.idProj);
   }
 
   formatRupiah(fee, prefix) {

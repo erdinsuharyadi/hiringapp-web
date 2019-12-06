@@ -247,6 +247,13 @@ class OfferDetail extends Component {
                           )}
                         </p>
                       </div>
+                      <div className="form-group">
+                        <p className="mb-1">
+                          Project Goal: 
+                          <br/>
+                          {this.state.obj_proj.progressEng === '1' ? <span className="badge badge-pill badge-success">Success</span> : (this.state.obj_proj.progressEng === '0' ? <span className="badge badge-pill badge-danger">Failed</span> : " -")} 
+                        </p>
+                      </div>
 
                       <hr />
 

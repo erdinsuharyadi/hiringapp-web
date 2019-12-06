@@ -9,11 +9,11 @@ class CardOffer extends Component {
         <div className="card-header">
           <strong>{this.props.companyname}</strong> - {this.props.datepost}
         </div>
-        <div className="card-body">
+        <div className="card-body ">
           <h6 className="card-title">{this.props.projectname}</h6>
-          <p className="card-text">{this.props.projectdesc}</p>
-          <hr/>
-          {this.props.sts_project_eng === "1" ? (
+          <p className="card-text ">{this.props.projectdesc}
+          <br/>
+          Status Offer: {this.props.sts_project_eng === "1" ? (
             <span className="badge badge-pill badge-warning">Waiting for Confirmation</span>
           ) : this.props.sts_project_eng === "2" ? (
             <span className="badge badge-pill badge-success">Accepted</span>
@@ -24,6 +24,13 @@ class CardOffer extends Component {
           ) : (
             <span className="badge badge-pill badge-light">-</span>
           )}
+          <br/>
+          Project Goal: {this.props.progress === '1' ? <span className="badge badge-pill badge-success">Success</span> : (this.props.progress === '0' ? <span className="badge badge-pill badge-danger">Failed</span> : " -")} 
+          </p>
+          <hr/>
+          
+
+          
           <Link
             to={"/offer/view/?idProj=" + this.props.idproject +"&idEng="+ this.props.ideng}
             className="btn btn-sm btn-primary float-right"

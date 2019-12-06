@@ -55,6 +55,11 @@ class ProfileEng extends Component {
                   Edit Profile
                 </button>
               </Link>
+              <Link to="/offer/">
+                <button className="btn btn-md btn-gray200 mr-2 mb-2">
+                  Project
+                </button>
+              </Link>
               {/* <Link to="profile/account"><button className="btn btn-md btn-gray200 mb-2">Account</button></Link> */}
             </div>
             <h1 className="font-weight-bold title">{this.state.obj_enguser.name_eng}</h1>
