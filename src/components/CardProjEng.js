@@ -51,7 +51,11 @@ class CardProjEng extends Component {
       }
     } else {
       this.myBtnNego.disabled = this.state.btnNego;
-      this.myBtnAction.disabled = this.state.btnAction;
+      if (this.state.sts_project === '2') {
+        this.myBtnAction.disabled = false;
+      } else {
+        this.myBtnAction.disabled = this.state.btnAction;
+      }
     }
     
   }

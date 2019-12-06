@@ -36,7 +36,7 @@ class Home extends Component {
             <div className="card-columns">
 
               {this.state.arr_engineer.map((val, idx) => (
-                <CardEngineer key={idx} ideng={val.id_eng} title={val.name_eng} job={val.job} img={val.photo} skill={val.name_skill} totSuccess={val.successProj} rateProj={val.rateSuccess} />
+                <CardEngineer key={idx} ideng={val.id_eng} title={val.name_eng} job={val.job} img={val.photo} skill={val.name_skill} totSuccess={val.successProj} rateProj={Math.round(val.rateSuccess)} />
               ))}
 
              
