@@ -6,8 +6,6 @@ import Header from "../../components/Header";
 import moment from "moment";
 import queryString from "query-string";
 
-
-
 class OfferDetail extends Component {
   constructor(props) {
     super(props);
@@ -27,10 +25,10 @@ class OfferDetail extends Component {
   };
 
   async componentDidMount() {
-    const values = queryString.parse(this.props.location.search)
-    
-    let IdProj = values.idProj
-    let IdEng = values.idEng
+    const values = queryString.parse(this.props.location.search);
+
+    let IdProj = values.idProj;
+    let IdEng = values.idEng;
     const resProj = await this.getData(
       "/project/offer/?idProj=" + IdProj + "&idEng=" + IdEng
     );
@@ -236,7 +234,11 @@ class OfferDetail extends Component {
                             </span>
                           ) : this.state.obj_proj.sts_project_eng === "0" ? (
                             <span className="badge badge-pill badge-danger">
-                              Rejected
+                              Decline
+                            </span>
+                          ) : this.state.obj_proj.sts_project_eng === "3" ? (
+                            <span className="badge badge-pill badge-info">
+                              Negotiation
                             </span>
                           ) : (
                             <span className="badge badge-pill badge-light">
@@ -298,7 +300,7 @@ class OfferDetail extends Component {
                                   className="modal-title"
                                   id="exampleModalLabel"
                                 >
-                                  Modal title
+                                  Negotiation Fee Project
                                 </h5>
                                 <button
                                   type="button"

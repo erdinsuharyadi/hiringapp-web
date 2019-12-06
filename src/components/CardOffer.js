@@ -18,7 +18,9 @@ class CardOffer extends Component {
           ) : this.props.sts_project_eng === "2" ? (
             <span className="badge badge-pill badge-success">Accepted</span>
           ) : this.props.sts_project_eng === "0" ? (
-            <span className="badge badge-pill badge-danger">Rejected</span>
+            <span className="badge badge-pill badge-danger">Decline</span>
+          ) : this.props.sts_project_eng === "3" ? (
+            <span className="badge badge-pill badge-info">Negotiation</span>
           ) : (
             <span className="badge badge-pill badge-light">-</span>
           )}

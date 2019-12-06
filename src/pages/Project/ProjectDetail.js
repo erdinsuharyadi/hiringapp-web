@@ -138,7 +138,7 @@ class OfferDetail extends Component {
                       <hr />
 
                       <div className="form-group p-t-15 text-right">
-                        <Link to="/offer/">
+                        <Link to="/company/project">
                           <button className="btn btn-md btn-light mr-3 mb-2">
                             Back
                           </button>
@@ -173,6 +173,9 @@ class OfferDetail extends Component {
                       sts_project_eng={val.sts_project_eng}
                       fee={this.formatRupiah(val.fee, "Rp")}
                       dateaccepted={val.date_accepted_eng || "-"}
+                      id_project_eng={val.id_project_eng}
+                      id_bid={val.id_bid}
+                      
                     />
                   ))}
                 

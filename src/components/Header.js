@@ -52,7 +52,7 @@ class Header extends Component {
                   <div className="input-group-text bg-graylight"><FaSearch /></div>
                 </span>
               </div> */}
-              <div className="input-group mt-2 mb-2 col-md-8">
+              <div className="input-group mt-2 mb-2 col-md-6">
                 <input
                   className="form-control py-4 border-right-0 border"
                   type="search"
