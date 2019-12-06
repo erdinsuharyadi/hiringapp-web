@@ -12,7 +12,7 @@ const CardEngineer = (props) => {
 
           <p className="ml-2">
             <strong>{props.job}</strong> <br/> 
-            <small><FaCheckCircle/> : 0 Project | <FaStar/> : 90% Success</small> <br/> 
+            <small><FaCheckCircle/> : {props.totSuccess === null ? 0 : props.totSuccess} Project | <FaStar/> : {props.rateProj === null ? 0 : props.rateProj }% Success</small> <br/> 
             <small>Skill : {props.skill}</small>
           </p>
        
@@ -31,7 +31,9 @@ CardEngineer.defaultProps = {
   title: 'Title',
   img: 'https://www.pngfind.com/pngs/m/110-1102775_download-empty-profile-hd-png-download.png',
   job: '-',
-  skill: '-'
+  skill: '-',
+  totSuccess: 0,
+  rateProj: 0,
 }
 
 

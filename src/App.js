@@ -22,7 +22,9 @@ import Project from './pages/Project/Project';
 import ProjectAdd from './pages/Project/ProjectAdd';
 import ProjectDetail from './pages/Project/ProjectDetail';
 import ProjectEdit from './pages/Project/ProjectEdit';
-
+import Eng from './pages/Eng'
+import store from "./redux/store"
+import { Provider } from "react-redux";
 
 function App(props) {
 
@@ -35,9 +37,11 @@ function App(props) {
   }
 
   return (
+  <Provider store={store}>
     <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
       <Router>
         <div>
+        <Route path={"/eng"} component={Eng} />
           <Route exact path="/engineer/profile/:username" component={ProfileEng} />
           <Route path="/engineer/profile/add" component={ProfileEngAdd} />
           <Route path="/engineer/edit" component={ProfileEngEdit} />
@@ -60,6 +64,7 @@ function App(props) {
         </div>
       </Router>
     </AuthContext.Provider>
+  </Provider>  
   );
 }
 

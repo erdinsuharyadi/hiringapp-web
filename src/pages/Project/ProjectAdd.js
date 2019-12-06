@@ -49,7 +49,7 @@ class ProjectAdd extends Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to={"/home"} />;
+      return <Redirect to={"/company/project/"} />;
     }
 
     return (
