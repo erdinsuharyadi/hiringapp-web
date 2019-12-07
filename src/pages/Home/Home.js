@@ -19,12 +19,15 @@ class Home extends Component {
   }
 
   async componentDidMount() {
+    
+    
     const response = await this.getData('/engineer/');
     let res = response.data.result
     console.log(response.data.result)
     if (response.data) {
       this.setState({ arr_engineer: res }) 
     }
+    
   }
 
   render() {

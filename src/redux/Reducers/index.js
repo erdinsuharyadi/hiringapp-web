@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
-import engList from './Engineer'
+import data from './User';
 
 const rootReducer = combineReducers({
-  engList
+  data
 })
 
 export default rootReducer

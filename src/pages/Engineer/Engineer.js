@@ -47,7 +47,7 @@ class Engineer extends Component {
                   {this.state.arr_engineer.name_eng} </h1>
                   <ul>
                     <li><hr/></li>
-                    <li className="text-center"><FaCheckCircle/> : 0 Project | <FaStar/> : 90% Success</li>
+                    <li className="text-center"><FaCheckCircle/> : {this.state.arr_engineer.successProj} Project | <FaStar/> : {this.state.arr_engineer.rateSuccess}% Success</li>
                     <li><hr/></li>
                     <li>Profession: {this.state.arr_engineer.job}</li>
                     <li>Location : {this.state.arr_engineer.location}</li>

@@ -1,27 +1,28 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { FaCommentDots, FaBell } from "react-icons/fa";
-import Logout from "./Logout";
+// import Logout from "./Logout";
 
 class Header extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      redirectToReferrer: false
+      logout: false,
     };
     this.logout = this.logout.bind(this);
   }
 
-  logout() {
-    localStorage.removeItem("x-access-token");
-    this.setState({ redirectToReferrer: true });
-  }
+  logout () {
+    localStorage.clear();
+    this.setState({logout: true})
+ }
 
   render() {
-    if (this.state.redirectToReferrer) {
-      return <Redirect to={"/login"} />;
-    }
+    if (this.state.logout) {
+      return <Redirect to={'/login'}/>;
+   }
+   
     return (
       <header className="header">
         <nav className="navbar navbar-expand-lg navbar-light bg-white fixed-top">
@@ -75,7 +76,9 @@ class Header extends Component {
                 </Link>
               </li>
               <li className="nav-item ml-2">
-                <Link className="navbar-brand" to={"/company/profile/"+localStorage.getItem('username')}>
+                <Link 
+                className="navbar-brand" 
+                to={"/company/profile/"+localStorage.getItem('username')}>
                   <img
                     className="rounded-circle mr-2"
                     src={require("../assets/img/av.png")}
@@ -96,6 +99,7 @@ class Header extends Component {
                 {/* </Link> */}
               </li>
 
+              <Link to={"/engineer/profile/"+localStorage.getItem('username')}>
               <li className="nav-item">
                 {/* <Link className="navbar-brand"> */}
                 <span className="ml-5 mr-2">
@@ -103,6 +107,7 @@ class Header extends Component {
                 </span>
                 {/* </Link> */}
               </li>
+              </Link>
 
               <li className="nav-item dropdown mr-auto">
                 <Link
@@ -133,8 +138,9 @@ class Header extends Component {
                   className="dropdown-menu dropdown-menu-right shadow-lg"
                   aria-labelledby="dropdown02"
                 >
-                  {/* <Link to="#" onClick={this.logout} className="logout">Logout</Link> */}
-                  <Logout />
+
+                  <button onClick={this.logout} className="logout">Logout</button>
+                  
                   <div className="dropdown-divider"></div>
                 </div>
               </li>

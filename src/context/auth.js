@@ -1,7 +1,28 @@
-import { createContext, useContext } from 'react';
+class Auth {
+    
+  constructor() {
+    this.authenticated = '';
+    
+    if (localStorage.getItem('login')) {
+      this.authenticated = true
+    } else {
+      this.authenticated = false
+    }
+  }
 
-export const AuthContext = createContext();
+  loginAuth(cb) {
+      this.authenticated = true
+      cb();
+  }
 
-export function useAuth() {
-  return useContext(AuthContext);
+  logout(cb) {
+    this.authenticated = false;
+    cb();
+  }
+
+  isAuthenticated() {
+    return this.authenticated;
+  }
 }
+
+export default new Auth();

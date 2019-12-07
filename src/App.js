@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import { AuthContext } from "./context/auth";
-// import PrivateRoute from './PrivateRoute';
+import {ProtectedRoute} from './context/ProtectedRoute'
 
 import HomePage from './pages/Home/Home';
 import ProfileEng from './pages/Engineer/ProfileEng';
@@ -22,26 +21,19 @@ import Project from './pages/Project/Project';
 import ProjectAdd from './pages/Project/ProjectAdd';
 import ProjectDetail from './pages/Project/ProjectDetail';
 import ProjectEdit from './pages/Project/ProjectEdit';
-import Eng from './pages/Eng'
-import store from "./redux/store"
+
+import store from "./redux/Store"
 import { Provider } from "react-redux";
 
 function App(props) {
 
-  const [authTokens, setAuthTokens] = useState();
   
-  const setTokens = (data) => {
-    console.log(data)
-    localStorage.setItem("x-access-token", JSON.stringify(data));
-    setAuthTokens(data);
-  }
-
   return (
-  <Provider store={store}>
-    <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
+  
       <Router>
         <div>
-        <Route path={"/eng"} component={Eng} />
+          <Route path="/login" component={Login} />
+          <ProtectedRoute path="/home" component={HomePage} />
           <Route exact path="/engineer/profile/:username" component={ProfileEng} />
           <Route path="/engineer/profile/add" component={ProfileEngAdd} />
           <Route path="/engineer/edit" component={ProfileEngEdit} />
@@ -56,15 +48,13 @@ function App(props) {
           <Route path="/hire/:idEngineer" component={Hire} />
           <Route exact path="/offer" component={Offer} />
           <Route path="/offer/view/" component={OfferDetail} />
-          <Route path="/logout" component={Logout} />
+          {/* <Route path="/logout" component={Logout} /> */}
           <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
-          <Route path="/home" component={HomePage} />
+          
           <Route exact path="/" component={Front} />
         </div>
       </Router>
-    </AuthContext.Provider>
-  </Provider>  
+  
   );
 }
 
