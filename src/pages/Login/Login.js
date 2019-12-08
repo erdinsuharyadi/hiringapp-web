@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
 import axios from "axios";
@@ -7,6 +8,7 @@ import Auth from '../../context/auth';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'; 
 import {getEngineer, getCompany} from '../../redux/Actions/User';
+
 
 
 
@@ -37,10 +39,11 @@ class Login extends Component {
 
 
   postLogin(field) {
+        console.log(process.env.TES);
         
     axios({
        method: 'post',
-       url: 'http://localhost:4000/auth/login',
+       url: 'http://35.174.156.122:2000/auth/login',
        headers: {'Content-Type': 'application/json'},
        data: field
 
