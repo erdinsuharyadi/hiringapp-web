@@ -50,7 +50,7 @@ class Login extends Component {
        localStorage.setItem('login', true)
        localStorage.setItem("username", field.username);
        localStorage.setItem("x-access-token", JSON.stringify(result.token));
-      //  this.setState({login: true})
+       this.setState({login: true})
        this.setDatauser(field.username);
       alert("Login Success!");
     }).catch(err => {

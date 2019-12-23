@@ -48,6 +48,7 @@ class ProfileEng extends Component {
               alt="user profile"
               className="mt-neg100 mb-4 rounded-circle"
               width={128}
+              height={128}
             />
             <div className="float-right">
               <Link to="/engineer/edit">

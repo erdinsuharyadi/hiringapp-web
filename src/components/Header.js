@@ -53,7 +53,7 @@ class Header extends Component {
                   <div className="input-group-text bg-graylight"><FaSearch /></div>
                 </span>
               </div> */}
-              <div className="input-group mt-2 mb-2 col-md-6">
+              <div className="input-group mt-2 mb-2 mr-10 col-md-6">
                 <input
                   className="form-control py-4 border-right-0 border"
                   type="search"
@@ -78,38 +78,21 @@ class Header extends Component {
               <li className="nav-item ml-2">
                 <Link 
                 className="navbar-brand" 
-                to={"/company/profile/"+localStorage.getItem('username')}>
+                to={"/"+(this.props.dataUser.level === '1'? 'company' : 'engineer')+"/profile/"+localStorage.getItem('username')}>
                   <img
                     className="rounded-circle mr-2"
-                    src={this.props.dataUser.photo}
+                    src={this.props.dataUser.photo || this.props.dataUser.logo || null}
                     alt="Profile"
                     width={30}
+                    height={30}
                   />
-                  <span className="align-middle">{this.props.dataUser.name_eng}</span>
+                  <span className="align-middle">{this.props.dataUser.name || 'Profile'}</span>
                 </Link>
               </li>
 
               <div className="vl" />
 
-              <li className="nav-item">
-                {/* <Link className="navbar-brand"> */}
-                <span className="ml-5 ">
-                  <FaCommentDots size={30} />
-                </span>
-                {/* </Link> */}
-              </li>
-
-              <Link to={"/engineer/profile/"+localStorage.getItem('username')}>
-              <li className="nav-item">
-                {/* <Link className="navbar-brand"> */}
-                <span className="ml-5 mr-2">
-                  <FaBell size={30} />
-                </span>
-                {/* </Link> */}
-              </li>
-              </Link>
-
-              <li className="nav-item dropdown mr-auto">
+              <li className="nav-item dropdown ml-4 mr-auto">
                 <Link
                   to="#"
                   className="nav-link"
@@ -139,9 +122,9 @@ class Header extends Component {
                   aria-labelledby="dropdown02"
                 >
 
-                  <button onClick={this.logout} className="logout">Logout</button>
+                  <button onClick={this.logout} className="logout"> Logout</button>
                   
-                  <div className="dropdown-divider"></div>
+                  {/* <div className="dropdown-divider"></div> */}
                 </div>
               </li>
             </ul>
