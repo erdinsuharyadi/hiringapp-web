@@ -43,10 +43,10 @@ class Hire extends Component {
   async hire() {
     try {
       const response = await axiosPost("/hire/", {
-        id_project: this.state.selectedOptions.value,
-        id_eng: this.state.id_eng,
-        fee: this.state.fee,
-        project_job: this.state.project_job
+        id_project: 1,
+        id_eng: 2,
+        fee: 1000,
+        project_job: 'kuli'
       });
       console.log("Returned data:", response.data);
       if (response.data.result.affectedRows === 1) {
