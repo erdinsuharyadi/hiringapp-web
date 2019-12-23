@@ -22,7 +22,7 @@ import ProjectAdd from './pages/Project/ProjectAdd';
 import ProjectDetail from './pages/Project/ProjectDetail';
 import ProjectEdit from './pages/Project/ProjectEdit';
 
-import store from "./redux/Store"
+import store from "./redux/store"
 import { Provider } from "react-redux";
 
 function App(props) {

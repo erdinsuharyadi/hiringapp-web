@@ -43,7 +43,7 @@ class Login extends Component {
         
     axios({
        method: 'post',
-       url: 'http://35.174.156.122:2000/auth/login',
+       url: 'http://3.82.228.249:2000/auth/login',
        headers: {'Content-Type': 'application/json'},
        data: field
 
