@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { FaCommentDots, FaBell } from "react-icons/fa";
-// import Logout from "./Logout";
+import { connect } from 'react-redux';
 
 class Header extends Component {
   constructor(props) {
@@ -28,9 +28,9 @@ class Header extends Component {
         <nav className="navbar navbar-expand-lg navbar-light bg-white fixed-top">
           <Link to="/" className="navbar-brand font-weight-bolder mr-3">
             <img
-              src={require("../assets/img/logo-arka.png")}
+              src={require("../assets/img/logo-HiringNesia.png")}
               alt="logo"
-              width={80}
+              width={120}
             />
           </Link>
           <button
@@ -81,11 +81,11 @@ class Header extends Component {
                 to={"/company/profile/"+localStorage.getItem('username')}>
                   <img
                     className="rounded-circle mr-2"
-                    src={require("../assets/img/av.png")}
+                    src={this.props.dataUser.photo}
                     alt="Profile"
                     width={30}
                   />
-                  <span className="align-middle">Profile</span>
+                  <span className="align-middle">{this.props.dataUser.name_eng}</span>
                 </Link>
               </li>
 
@@ -152,4 +152,10 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = state => {
+  return {
+     dataUser: state.data.userData
+  }
+}
+
+export default connect(mapStateToProps)(Header);

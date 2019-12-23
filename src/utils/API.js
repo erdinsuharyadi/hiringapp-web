@@ -1,6 +1,6 @@
 const axios = require('axios')
 const instance = axios.create({
-  baseURL: "http://35.174.156.122:2000"
+  baseURL: "http://3.82.228.249:2000"
   // headers: {'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoiOTMwMDU4ZDctZmRlYi00NmNmLWFmYTUtNTgyNGE0MzViZDkxIiwidXNlcm5hbWUiOiJlcmRpbnN1aGFyeWFkaSIsImVtYWlsIjoiZXJkaW5zdWhhcnlhZGlAZ21haWwuY29tIiwibGV2ZWwiOiIxIiwiaWF0IjoxNTc0OTMzMDI4LCJleHAiOjE1NzUwMTk0Mjh9.STC3JCrWyDs672IcASBOaHUoXRkiOz4RNj_hFZSZD6k'}  
 });
 instance.defaults.headers.common['x-access-token'] = JSON.parse(localStorage.getItem('x-access-token'));

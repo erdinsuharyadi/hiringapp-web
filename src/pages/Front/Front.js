@@ -21,7 +21,7 @@ export default class Front extends React.Component{
             <div className="col-md-6 mt-6">
              
               <form className="signup-form">
-                <h2 className="text-center sign">Welcome to Hiring App</h2>
+                <h2 className="text-center sign">Welcome to HiringNesia App</h2>
                 <hr />
                 <div className="form-group text-center">
                   <Link to="/signup"><button type="submit" className="btn btn-primary btn-block">Sign up</button></Link>

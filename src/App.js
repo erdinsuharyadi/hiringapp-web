@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {ProtectedRoute} from './context/ProtectedRoute'
 
@@ -14,16 +14,16 @@ import Hire from './pages/Hire/Hire'
 import Front from './pages/Front/Front'
 import Offer from './pages/Offer/Offer'
 import OfferDetail from './pages/Offer/OfferDetail'
-import Logout from './components/Logout';
-// import ProfileCompAdd from './pages/ProfileCompAdd';
 import ProfileCompEdit from './pages/Company/ProfileCompEdit';
 import Project from './pages/Project/Project';
 import ProjectAdd from './pages/Project/ProjectAdd';
 import ProjectDetail from './pages/Project/ProjectDetail';
 import ProjectEdit from './pages/Project/ProjectEdit';
 
+
 import store from "./redux/store"
 import { Provider } from "react-redux";
+
 
 function App(props) {
 
@@ -48,9 +48,7 @@ function App(props) {
           <Route path="/hire/:idEngineer" component={Hire} />
           <Route exact path="/offer" component={Offer} />
           <Route path="/offer/view/" component={OfferDetail} />
-          {/* <Route path="/logout" component={Logout} /> */}
-          <Route path="/signup" component={Signup} />
-          
+          <Route path="/signup" component={Signup} />    
           <Route exact path="/" component={Front} />
         </div>
       </Router>
