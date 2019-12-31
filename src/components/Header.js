@@ -26,7 +26,7 @@ class Header extends Component {
     return (
       <header className="header">
         <nav className="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-          <Link to="/" className="navbar-brand font-weight-bolder mr-3">
+          <Link to="/home" className="navbar-brand font-weight-bolder mr-3">
             <img
               src={require("../assets/img/logo-HiringNesia.png")}
               alt="logo"

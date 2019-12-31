@@ -32,23 +32,23 @@ function App(props) {
   
       <Router>
         <div>
-          <Route path="/login" component={Login} />
-          <ProtectedRoute path="/home" component={HomePage} />
-          <Route exact path="/engineer/profile/:username" component={ProfileEng} />
-          <Route path="/engineer/profile/add" component={ProfileEngAdd} />
-          <Route path="/engineer/edit" component={ProfileEngEdit} />
-          <Route exact path="/company/profile/:username" component={ProfileComp} />
-          <Route path="/company/edit" component={ProfileCompEdit} />
-          <Route exact path="/company/project/" component={Project} />
-          <Route path="/company/project/add" component={ProjectAdd} />
-          <Route path="/company/project/edit/:idProj" component={ProjectEdit} />
-          <Route path="/company/project/view/:idProj" component={ProjectDetail} />
-          <Route path="/detail/:idEngineer" component={Engineer} />
-          <Route path="/hire/:idEngineer" component={Hire} />
-          <Route exact path="/offer" component={Offer} />
-          <Route path="/offer/view/" component={OfferDetail} />
-          <Route path="/signup" component={Signup} />    
           <Route exact path="/" component={Front} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />    
+          <ProtectedRoute path="/home" component={HomePage} />
+          <ProtectedRoute exact path="/engineer/profile/:username" component={ProfileEng} />
+          <ProtectedRoute path="/engineer/profile/add" component={ProfileEngAdd} />
+          <ProtectedRoute path="/engineer/edit" component={ProfileEngEdit} />
+          <ProtectedRoute exact path="/company/profile/:username" component={ProfileComp} />
+          <ProtectedRoute path="/company/edit" component={ProfileCompEdit} />
+          <ProtectedRoute exact path="/company/project/" component={Project} />
+          <ProtectedRoute path="/company/project/add" component={ProjectAdd} />
+          <ProtectedRoute path="/company/project/edit/:idProj" component={ProjectEdit} />
+          <ProtectedRoute path="/company/project/view/:idProj" component={ProjectDetail} />
+          <ProtectedRoute path="/detail/:idEngineer" component={Engineer} />
+          <ProtectedRoute path="/hire/:idEngineer" component={Hire} />
+          <ProtectedRoute exact path="/offer" component={Offer} />
+          <ProtectedRoute path="/offer/view/" component={OfferDetail} />
         </div>
       </Router>
   
