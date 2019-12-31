@@ -19,7 +19,7 @@ class Signup extends Component {
     console.log("function regis click");
     try {
       const response = await axios.post(
-        "http://localhost:4000/auth/register/",
+        "http://3.82.228.249:2000/auth/register/",
         field
       );
       console.log("Returned data:", response.data);

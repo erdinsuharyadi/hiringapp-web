@@ -26,7 +26,7 @@ class ProfileCompAdd extends Component {
     try {
       console.log("klik tombol submit")
       console.log(this.state)
-      const response = await axiosPost('http://localhost:4000/company/', this.state.data)
+      const response = await axiosPost('http://3.82.228.249:2000/company/', this.state.data)
 
       console.log('Returned data:', response);
       if(response.data.status === 200) {

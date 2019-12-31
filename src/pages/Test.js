@@ -36,7 +36,7 @@ class Test extends React.Component {
       getsearch() {
         var token = localStorage.getItem('Authorization');
         axios.defaults.headers.common['Authorization'] = token;
-        axios.get(`http://localhost:3000/myhire/search/?skill=${this.state.title}`)
+        axios.get(`http://3.82.228.249:2000/myhire/search/?skill=${this.state.title}`)
             .then(async res => {
                 const persons = await res.data.result
                 await this.setState({ 

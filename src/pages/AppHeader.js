@@ -21,7 +21,7 @@ class Appheader extends React.Component {
       axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
       var token = localStorage.getItem('Authorization');
         axios.defaults.headers.common['Authorization'] = token;
-      const profile = await axios.get('http://localhost:3000/myhire/by')
+      const profile = await axios.get('http://3.82.228.249:2000/myhire/by')
       await this.setState({ 
         myData: profile.data.result[0]
      });

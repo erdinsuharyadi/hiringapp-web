@@ -38,7 +38,7 @@ class ProfileEngAdd extends Component {
 
   async addprofile() {
     try {
-      const response = await axiosPost('http://localhost:4000/engineer/', {
+      const response = await axiosPost('http://3.82.228.249:2000/engineer/', {
         name_eng: this.state.name_eng,
         dob: this.state.dob,
         location: this.state.location,
@@ -49,7 +49,7 @@ class ProfileEngAdd extends Component {
       const arrSelSkill = this.state.selectedOptions
       for (let i = 0; i < arrSelSkill.length; i++) {
         const idSkill = arrSelSkill[i].value
-        await axiosPost('http://localhost:4000/engskill/', {
+        await axiosPost('http://3.82.228.249:2000/engskill/', {
           id_eng: response.data.result.insertId,
           id_skill: idSkill
         });
