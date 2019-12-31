@@ -17,8 +17,8 @@ const CardEngineer = (props) => {
           </p>
        
         <div className="more">
-          <Link to={'/detail/' + props.ideng}>
-            <FaArrowAltCircleRight /> More Detail</Link>
+          {JSON.parse(localStorage.getItem('state')).data.userData.id_eng ? ('') : (<Link to={'/detail/' + props.ideng}><FaArrowAltCircleRight /> More Detail</Link>)}
+          
         </div>
       </div>
       
