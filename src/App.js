@@ -39,7 +39,6 @@ function App(props) {
           <Route path="/engineer/edit" component={ProfileEngEdit} />
           <Route exact path="/company/profile/:username" component={ProfileComp} />
           <Route path="/company/edit" component={ProfileCompEdit} />
-          
           <Route exact path="/company/project/" component={Project} />
           <Route path="/company/project/add" component={ProjectAdd} />
           <Route path="/company/project/edit/:idProj" component={ProjectEdit} />
