@@ -44,7 +44,7 @@ class ProfileEng extends Component {
           ></div>
           <div className="container mb-4">
             <img
-              src={this.state.obj_enguser.photo}
+              src={this.state.obj_enguser.photo || 'https://res.cloudinary.com/erdinsuharyadi/image/upload/v1577793878/hiringapp/assets/avatar.jpg'}
               alt="user profile"
               className="mt-neg100 mb-4 rounded-circle"
               width={128}
@@ -64,7 +64,7 @@ class ProfileEng extends Component {
               {/* <Link to="profile/account"><button className="btn btn-md btn-gray200 mb-2">Account</button></Link> */}
             </div>
             <h1 className="font-weight-bold title">{this.state.obj_enguser.name_eng}</h1>
-            <p>I love Art, Web Design, Photography, Design, Illustration</p>
+            <p>{this.state.obj_enguser.job}</p>
           </div>
         </main>
         <section className="bg-gray200 pt-4 pb-4">

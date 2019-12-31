@@ -44,7 +44,7 @@ class ProfileCamp extends Component {
           ></div>
           <div className="container mb-4">
             <img
-              src={this.state.obj_compuser.logo}
+              src={this.state.obj_compuser.logo ? this.state.obj_compuser.logo : 'https://res.cloudinary.com/erdinsuharyadi/image/upload/v1576119042/hiringapp/assets/images.png'}
               alt="user profile"
               className="mt-neg100 mb-4 rounded-circle"
               width={128}
@@ -65,7 +65,7 @@ class ProfileCamp extends Component {
               {/* <Link to="profile/account"><button className="btn btn-md btn-gray200">Account</button></Link> */}
             </div>
             <h1 className="font-weight-bold title">
-              {this.state.obj_compuser.name}
+              {this.state.obj_compuser.name ? this.state.obj_compuser.name : 'Your Name'}
             </h1>
             {/* <p>I love Art, Web Design, Photography, Design, Illustration</p> */}
           </div>
@@ -79,19 +79,19 @@ class ProfileCamp extends Component {
                     <div className="form-group">
                       <p className="mb-2">
                         Company Name:
-                        <br /> <b>{this.state.obj_compuser.name_company}</b>
+                        <br /> <b>{this.state.obj_compuser.name_company ? this.state.obj_compuser.name_company : 'Your company name'}</b>
                       </p>
                     </div>
                     <div className="form-group">
                       <p className="mb-2">
                         Location:
-                        <br /> <b>{this.state.obj_compuser.location}</b>
+                        <br /> <b>{this.state.obj_compuser.location ? this.state.obj_compuser.location : 'Your location'}</b>
                       </p>
                     </div>
                     <div className="form-group">
                       <p className="mb-2">
                         Description:
-                        <br /> <b>{this.state.obj_compuser.description}</b>
+                        <br /> <b>{this.state.obj_compuser.description ? this.state.obj_compuser.description : 'Decription'}</b>
                       </p>
                     </div>
                   </div>

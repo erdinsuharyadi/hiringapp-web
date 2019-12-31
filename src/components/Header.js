@@ -81,12 +81,12 @@ class Header extends Component {
                 to={"/"+(this.props.dataUser.level === '1'? 'company' : 'engineer')+"/profile/"+localStorage.getItem('username')}>
                   <img
                     className="rounded-circle mr-2"
-                    src={this.props.dataUser.photo || this.props.dataUser.logo || null}
+                    src={this.props.dataUser.photo || this.props.dataUser.logo || 'https://res.cloudinary.com/erdinsuharyadi/image/upload/v1577793878/hiringapp/assets/avatar.jpg'}
                     alt="Profile"
                     width={30}
                     height={30}
                   />
-                  <span className="align-middle">{this.props.dataUser.name || 'Profile'}</span>
+                  <span className="align-middle">{this.props.dataUser.name || this.props.dataUser.name_eng || 'Your Name'}</span>
                 </Link>
               </li>
 

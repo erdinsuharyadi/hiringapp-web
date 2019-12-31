@@ -48,21 +48,23 @@ class ProfileEngEdit extends Component {
   }
 
   async updateEng() {
+    console.log('skill', this.state.selectedOptions);
+    
     try {
       const response = await axiosPut("/engineer/"+this.state.obj_data_eng.id_eng, {
-        name_eng: this.state.name_eng || this.state.obj_data_eng.name_eng,
+        name_eng: this.state.name_eng,
         dob: this.state.dob,
-        location: this.state.location || this.state.obj_data_eng.location,
-        no_hp: this.state.no_hp || this.state.obj_data_eng.no_hp,
-        job: this.state.job || this.state.obj_data_eng.job,
-        showcase: this.state.showcase || this.state.obj_data_eng.showcase
+        location: this.state.location,
+        no_hp: this.state.no_hp,
+        job: this.state.job,
+        showcase: this.state.showcase
       });
       const arrSelSkill = this.state.selectedOptions;
       for (let i = 0; i < arrSelSkill.length; i++) {
         const idSkill = arrSelSkill[i].value;
         console.log(idSkill)
         await axiosPost("/engskill/", {
-          id_eng: 1,
+          id_eng: this.state.obj_data_eng.id_eng,
           id_skill: idSkill
         });
       }
@@ -100,12 +102,12 @@ class ProfileEngEdit extends Component {
     try {
       const fd = new FormData();
       fd.append("photo", this.state.selectedFile);
-      const response = await axiosPatch("/engineer/1", fd);
+      const response = await axiosPatch("/engineer/"+this.state.obj_data_eng.id_eng, fd);
       console.log(response.data);
       if (response.data.result.changedRows === 1) {
-        alert("Logo updated!");
+        alert("Photo updated!");
       } else {
-        alert("Upload logo failed");
+        alert("Upload photo failed");
       }
     } catch (error) {
       alert("Upload error!");

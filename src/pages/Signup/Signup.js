@@ -49,21 +49,21 @@ class Signup extends Component {
           <div className="wrap-login100">
             <Formik
               initialValues={{
+                name: "",
                 username: "",
                 password: "",
-                confirmPassword: "",
+                // confirmPassword: "",
                 email: "",
-                name: "",
-                level: ""
+                level: "1",
               }}
               validationSchema={Yup.object().shape({
                 username: Yup.string().required("Username is required"),
                 password: Yup.string()
                   .min(6, "Password must be at least 6 characters")
                   .required("Password is required"),
-                confirmPassword: Yup.string()
-                  .oneOf([Yup.ref("password"), null], "Passwords must match")
-                  .required("Confirm Password is required"),
+                // confirmPassword: Yup.string()
+                //   .oneOf([Yup.ref("password"), null], "Passwords must match")
+                //   .required("Confirm Password is required"),
                 email: Yup.string()
                   .email("Email is invalid")
                   .required("Email is required"),
@@ -134,7 +134,7 @@ class Signup extends Component {
                       className="invalid-feedback"
                     />
                   </div>
-                  <div className="mb-4" data-validate="Enter password">
+                  {/* <div className="mb-4" data-validate="Enter password">
                     <label>Confirm Password</label>
                     <span className="btn-show-pass"></span>
                     <Field
@@ -152,7 +152,7 @@ class Signup extends Component {
                       component="div"
                       className="invalid-feedback"
                     />
-                  </div>
+                  </div> */}
                   <div className="mb-4">
                     <label>Email</label>
                     <Field
